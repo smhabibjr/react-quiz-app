@@ -1,10 +1,13 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-const PublicRoute = (Component) => {
-  const { currentUser } = useAuth();
+export default function PublicRoute({ children }) {
+  const { currentUser } = useAuth()
 
-  return currentUser ? <Navigate to="/" /> : <Component />;
-};
+  if (currentUser) {
+    console.log("already auth . go to home");
+    return <Navigate to='/' />
+  }
 
-export default PublicRoute;
+  return children;
+}
