@@ -15,16 +15,15 @@ export default function useVideoList() {
       try {
         setError(false);
         setLoading(true);
-        // request db
+        // request firebase database
         const snapshot = await get(videoQuery);
         setLoading(false);
-
         if (snapshot.exists()) {
-            console.log(snapshot);
-          setVideos((prevvideos) => {
-            return [...prevvideos, Object.values(snapshot.val())];
+          setVideos((prevVideos) => {
+            return [ ...Object.values(snapshot.val())];
           });
         } else {
+          
         }
       } catch (err) {
         console.log(err);
@@ -39,6 +38,6 @@ export default function useVideoList() {
   return {
     loading,
     error,
-    videos
-  }
+    videos,
+  };
 }

@@ -7,10 +7,10 @@ export default function Videos() {
   console.log(videos);
   return (
     <div className={classes.videos}>
-      {videos.map((video) => (
+      {videos.length > 0 && videos.map((video) => (
         <Link to="/quiz" key={video.youtubeID}>
-          <Video key={video.youtubeID} title={video.title} id={video.youtubeID} noq={video.noq} />
-        </Link>
+        <Video title={video.title} id={video.youtubeID} noq={video.noq} />
+      </Link>
       ))}
       {!loading && videos.length === 0 && <div>No data found!</div>}
       {error && <div>There was an error!</div>}
