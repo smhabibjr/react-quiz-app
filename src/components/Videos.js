@@ -15,12 +15,13 @@ export default function Videos() {
         <InfiniteScroll
         dataLength={videos.length}
         hasMore={hasMore}
+        loader="Loading..."
         next={() => setPage(page + 8)}
       >
         {videos.map((video, index) => (
           <React.Fragment key={`${video.youtubeID}-${index}`}>
             {video.noq > 0 ? (
-              <Link to="/quiz">
+              <Link to={`/quiz/${video.youtubeID}`}>
                 <Video
                   title={video.title}
                   id={video.youtubeID}
