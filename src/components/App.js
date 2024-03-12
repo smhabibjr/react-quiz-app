@@ -50,7 +50,7 @@ function App() {
 
             <Route
               exact
-              path="/result"
+              path="/result/:id"
               element={
                 <PrivateRoute>
                   <Result />
